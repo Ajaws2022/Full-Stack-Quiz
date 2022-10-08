@@ -56,6 +56,33 @@ function generateQuestion(){
    
 }
 
+var secLeft = 20;
+// This functions logic ensures that either the game is completed with the timer paused or the game is lost (ran out of time) and a 'game over' screen displayed.
+function setTimer(){
+    var timerInterval = setInterval(function(){
+        secLeft--;
+        timerEl.textContent = secLeft;
+    
+        if(secLeft <= 0 && currentQuestionIndex < questions.length) {
+          // Stops execution of action at set interval
+          clearInterval(timerInterval);
+          var h1Element = document.createElement('h1');
+          var parElement = document.createElement('p')
+
+          quizEl.textContent = '';
+          choicesEl.textContent = '';
+            h1Element.textContent = "Game Over!";
+            parElement.textContent = "You ran out of time.";
+            quizEl.append(h1Element);
+            choicesEl.append(parElement);
+        } if(secLeft > 0 && currentQuestionIndex === questions.length) {
+            clearInterval(timerInterval);
+            
+        }
+    
+      }, 1000);
+}
+
 function checkAnswer(event){
     if(questions[currentQuestionIndex].answer == event.target.innerText){
         confirmEl.textContent = '';
@@ -66,31 +93,10 @@ function checkAnswer(event){
         confirmEl.textContent = '';
         
         confirmEl.textContent = 'Incorrect!';
+        secLeft -= 5;
     }
     currentQuestionIndex++;
     generateQuestion();
-}
-
-var secLeft = 5;
-
-function setTimer(){
-    var timerInterval = setInterval(function(){
-        secLeft--;
-        timerEl.textContent = secLeft;
-    
-        if(secLeft === 0) {
-          // Stops execution of action at set interval
-          clearInterval(timerInterval);
-          var h1Element = document.createElement('h1');
-          quizEl.textContent = ''
-            h1Element.textContent = "Game Over!";
-            quizEl.append(h1Element);
-
-          
-        
-        }
-    
-      }, 1000);
 }
 
 buttonEl.addEventListener('click', setTimer);
