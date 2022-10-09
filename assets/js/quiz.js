@@ -27,6 +27,8 @@ var choicesEl = document.querySelector('.quiz-choices');
 var confirmEl = document.querySelector('#confirm')
 var timerEl = document.querySelector('.timeBox')
 var initialForm = document.querySelector('#submitInitials')
+var initials = document.querySelector('#initials')
+var submitBtn = document.querySelector('#submitBtn')
 var secLeft = 20;
 
 // var  startingQuestionIndex = 0;
@@ -40,9 +42,12 @@ function generateQuestion(){
     choicesEl.innerHTML = "";
     if(currentQuestionIndex >= questions.length){
         var h1Element = document.createElement('h1');
-        
+        // displays a message and prompt for initials when the game is completed properly
     h1Element.textContent = "You've reached the end of the game!";
     initialForm.style.display= "block";
+    var userScore = initials.value += (" -" + secLeft.valueOf);
+    submitBtn.addEventListener('click', localStorage.setItem('Score', JSON.stringify(userScore)));
+    
     confirmEl.textContent = '';
     
     quizEl.append(h1Element);
@@ -50,12 +55,12 @@ function generateQuestion(){
     return;
 
     }
-    
+    // generates a question beginning at the zero index
     var currentQuestion = questions[currentQuestionIndex];
     var h1Element = document.createElement('h1');
     h1Element.textContent = currentQuestion.question;
     quizEl.append(h1Element);
-
+    // adds the choices for the question below it
     for(var i = 0; i < currentQuestion.choices.length; i++){
         var liElement = document.createElement('li');
         liElement.textContent = currentQuestion.choices[i]
@@ -71,7 +76,7 @@ function generateQuestion(){
 function setTimer(){
     var timerInterval = setInterval(function(){
         secLeft--;
-        timerEl.textContent = secLeft;
+        timerEl.textContent = 'Time: ' + secLeft;
     
         if(secLeft === 0 && currentQuestionIndex < questions.length) {
           // Stops execution of action at set interval
@@ -105,6 +110,7 @@ function setTimer(){
         }
     
       }, 1000);
+      
 }
 
 function checkAnswer(event){
@@ -121,6 +127,7 @@ function checkAnswer(event){
     }
     currentQuestionIndex++;
     generateQuestion();
+    event.stopPropagation();
 }
 
 
