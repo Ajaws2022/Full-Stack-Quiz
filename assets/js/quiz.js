@@ -44,14 +44,19 @@ function generateQuestion(){
     choicesEl.innerHTML = "";
     if(currentQuestionIndex >= questions.length){
         var h1Element = document.createElement('h1');
+        var scoreDisplay = document.createElement('div');
+
         // displays a message and prompt for initials when the game is completed properly
     h1Element.textContent = "You've reached the end of the game!";
+
+    scoreDisplay.innerHTML = ("Your score was: " + secLeft);
+
     initialForm.style.display= "block";
-    var userScore = initials.value += (" -" + secLeft.valueOf);
-    submitBtn.addEventListener('click', localStorage.setItem('Score', JSON.stringify(userScore)));
-    
+
     confirmEl.textContent = '';
-    
+
+    choicesEl.append(scoreDisplay);
+
     quizEl.append(h1Element);
     
     return;
@@ -140,3 +145,12 @@ buttonEl.addEventListener('click', () => {
 });
 
 choicesEl.addEventListener('click', checkAnswer);
+function submitScore(event){
+    
+    var userScore = initials.value + " -" + secLeft;
+    localStorage.setItem('Score', JSON.stringify(userScore))
+    event.preventDefault();
+
+}
+ 
+submitBtn.addEventListener('click', submitScore);
