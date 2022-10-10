@@ -1,0 +1,52 @@
+.header{
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.header div{
+    display: block;
+    
+}
+
+.timeBox {
+    margin: 16px;
+}
+
+
+#quiz-question {
+    background-color: white;
+    
+    justify-content: center;
+}
+#quiz-question h1{
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+}
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    
+    max-width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.quiz-choices {
+    display: inline-block;
+    padding:10px;
+
+    background-color: azure;
+    list-style-type: none;
+    
+}
+
+.quiz-choices li {
+    text-align: center;
+}
+
+.quiz-choices p {
+    text-align: center;
+}

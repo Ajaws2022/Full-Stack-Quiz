@@ -29,6 +29,7 @@ var timerEl = document.querySelector('.timeBox')
 var initialForm = document.querySelector('#submitInitials')
 var initials = document.querySelector('#initials')
 var submitBtn = document.querySelector('#submitBtn')
+var viewScores = document.querySelector('.viewScores')
 var secLeft = 20;
 
 // var  startingQuestionIndex = 0;
@@ -36,6 +37,7 @@ var secLeft = 20;
 var currentQuestionIndex = 0;
 // hides initial input form
 initialForm.style.display = "none";
+// viewScores.style.display = "none";
 // populates a quiz question at the top of the page
 function generateQuestion(){
     quizEl.innerHTML = "";
