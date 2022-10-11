@@ -32,30 +32,27 @@ var submitBtn = document.querySelector('#submitBtn')
 var viewScores = document.querySelector('.viewScores')
 var secLeft = 20;
 
-// var  startingQuestionIndex = 0;
-
 var currentQuestionIndex = 0;
 // hides initial input form
 initialForm.style.display = "none";
 // viewScores.style.display = "none";
 // populates a quiz question at the top of the page
 function generateQuestion(){
+
     quizEl.innerHTML = "";
+
     choicesEl.innerHTML = "";
+    
     if(currentQuestionIndex >= questions.length){
         var h1Element = document.createElement('h1');
-        var scoreDisplay = document.createElement('div');
-
+        
         // displays a message and prompt for initials when the game is completed properly
-    h1Element.textContent = "You've reached the end of the game!";
-
-    scoreDisplay.innerHTML = ("Your score was: " + secLeft);
+    
+        h1Element.textContent = "You've reached the end of the game!";
 
     initialForm.style.display= "block";
 
     confirmEl.textContent = '';
-
-    choicesEl.append(scoreDisplay);
 
     quizEl.append(h1Element);
     
@@ -64,26 +61,40 @@ function generateQuestion(){
     }
     // generates a question beginning at the zero index
     var currentQuestion = questions[currentQuestionIndex];
+
     var h1Element = document.createElement('h1');
+
     h1Element.textContent = currentQuestion.question;
+
     quizEl.append(h1Element);
     // adds the choices for the question below it
     for(var i = 0; i < currentQuestion.choices.length; i++){
+
         var liElement = document.createElement('li');
+
         liElement.textContent = currentQuestion.choices[i]
+
         choicesEl.append(liElement);
-
-    }
-
-   
+    } 
 }
-
 
 // This functions logic ensures that either the game is completed with the timer paused or the game is lost (ran out of time) and a 'game over' screen displayed.
 function setTimer(){
     var timerInterval = setInterval(function(){
+
         secLeft--;
+
         timerEl.textContent = 'Time: ' + secLeft;
+
+        function endQuiz(){
+            clearInterval(timerInterval);
+        
+            var scoreDisplay = document.createElement('div');
+        
+            scoreDisplay.innerHTML = ("Your score was: " + secLeft);
+
+            choicesEl.append(scoreDisplay);
+        }
     
         if(secLeft === 0 && currentQuestionIndex < questions.length) {
           // Stops execution of action at set interval
@@ -112,13 +123,15 @@ function setTimer(){
         }
             
         if(secLeft > 0 && currentQuestionIndex === questions.length) {
-            clearInterval(timerInterval);
+            // clearInterval(timerInterval);
+            endQuiz();
             
         }
     
       }, 1000);
       
 }
+
 
 function checkAnswer(event){
     if(questions[currentQuestionIndex].answer == event.target.innerText){
@@ -137,19 +150,23 @@ function checkAnswer(event){
     event.stopPropagation();
 }
 
-
 buttonEl.addEventListener('click', setTimer);
+
 buttonEl.addEventListener('click', generateQuestion);
+
 buttonEl.addEventListener('click', () => {
     buttonEl.style.display = 'none';
 });
 
 choicesEl.addEventListener('click', checkAnswer);
+
 function submitScore(event){
     
     var userScore = initials.value + " -" + secLeft;
     localStorage.setItem('Score', JSON.stringify(userScore))
     event.preventDefault();
+    // redirect to highscores page
+    window.location.href="HighScores.html"
 
 }
  
