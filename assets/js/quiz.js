@@ -159,15 +159,21 @@ buttonEl.addEventListener('click', () => {
 });
 
 choicesEl.addEventListener('click', checkAnswer);
+// var scores = [];
 
 function submitScore(event){
     
-    var userScore = initials.value + " -" + secLeft;
-    localStorage.setItem('Score', JSON.stringify(userScore))
+    var userScore = [initials.value + " -" + secLeft];
+    // scores.push(userScore);
+    // localStorage.setItem('Score', JSON.stringify(scores))
+    var addScore = JSON.parse(localStorage.getItem('Score')) || [];
+    addScore.push(userScore);
+    localStorage.setItem('Score', JSON.stringify(addScore));
+    
     event.preventDefault();
     // redirect to highscores page
     window.location.href="HighScores.html"
 
 }
- 
+
 submitBtn.addEventListener('click', submitScore);
