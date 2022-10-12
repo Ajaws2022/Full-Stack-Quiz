@@ -10,20 +10,38 @@
     
 }
 
-.timeBox {
-    margin: 16px;
+.viewScores{
+    font-family: 'Poppins', sans-serif;
+    font-style: ExtraBold 800 Italic;
+    color: #232d18;
 }
 
+.timeBox {
+    margin: 16px;
+    font-style: ExtraBold 800 Italic;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+.button{
+    background-color: #232d18;
+    color: beige;
+    border-radius: 5px;
+}
 
 #quiz-question {
     background-color: white;
-    
+    font-family: 'Poppins', sans-serif;
+    font-style: ExtraBold 800 Italic;
     justify-content: center;
 }
 #quiz-question h1{
+    font-family: 'Poppins', sans-serif;
+    font-style: ExtraBold 800 Italic;
     background-color: white;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 .quiz-container {
     display: flex;
@@ -35,9 +53,10 @@
 .quiz-choices {
     display: inline-block;
     padding:10px;
-
-    background-color: azure;
+    font-family: 'Poppins', sans-serif;
+    font-style: ExtraLight 200 Italic; 
     list-style-type: none;
+    max-width: 50%;
     
 }
 
@@ -47,4 +66,39 @@
 
 .quiz-choices p {
     text-align: center;
+}
+
+#confirm{
+    width: 75%;
+    margin-top: 15px;
+    padding-top: 5px;
+    border-top: #232d18 5px solid;
+    font-family: 'Poppins', sans-serif;
+    color: #232d18;
+    
+}
+
+
+
+#score-display{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#score-Header{
+    font-family: 'Poppins', sans-serif;
+}
+
+.scoreList li{
+    font-family: 'Poppins', sans-serif;
+}
+
+
+#initial-prompt{
+
+    font-family: 'Poppins', sans-serif;
+    font-style: ExtraBold 800 Italic;
+
 }

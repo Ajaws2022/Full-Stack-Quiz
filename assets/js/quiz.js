@@ -36,7 +36,13 @@ var opnScores = document.querySelector('.viewScores')
 var currentQuestionIndex = 0;
 // hides initial input form
 initialForm.style.display = "none";
+confirmEl.style.display = "none";
 // viewScores.style.display = "none";
+
+var elem = document.createElement("h1");
+elem.textContent = "Welcome To The JavaScript Terminology Quiz!";
+quizEl.append(elem);
+choicesEl.textContent = "This is a quiz based on JavaScript terminology. When you click 'Start Game!' a timer of 60 seconds will start. Your final score will be the total seconds left. If you answer incorrectly you will lose 12 seconds. Good luck!"
 // populates a quiz question at the top of the page
 function generateQuestion(){
 
@@ -146,6 +152,7 @@ function checkAnswer(event){
         confirmEl.textContent = 'Incorrect!';
         secLeft -= 5;
     }
+    confirmEl.style.display = "block";
     currentQuestionIndex++;
     generateQuestion();
     event.stopPropagation();
