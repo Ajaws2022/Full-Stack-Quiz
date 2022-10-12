@@ -31,6 +31,7 @@ var initials = document.querySelector('#initials')
 var submitBtn = document.querySelector('#submitBtn')
 var viewScores = document.querySelector('.viewScores')
 var secLeft = 20;
+var opnScores = document.querySelector('.viewScores')
 
 var currentQuestionIndex = 0;
 // hides initial input form
@@ -175,5 +176,9 @@ function submitScore(event){
     window.location.href="HighScores.html"
 
 }
+function openScores(){
 
+    window.location.href="HighScores.html"
+}
+opnScores.addEventListener('click', openScores);
 submitBtn.addEventListener('click', submitScore);
