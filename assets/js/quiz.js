@@ -92,7 +92,7 @@ function setTimer(){
         secLeft--;
 
         timerEl.textContent = 'Time: ' + secLeft;
-
+        // displays a submit score screen when the quiz is completed properly
         function endQuiz(){
             clearInterval(timerInterval);
         
@@ -102,7 +102,7 @@ function setTimer(){
 
             choicesEl.append(scoreDisplay);
         }
-    
+        // These if statements display a 'Game Over' screen if the quiz is failed
         if(secLeft === 0 && currentQuestionIndex < questions.length) {
           // Stops execution of action at set interval
           clearInterval(timerInterval);
@@ -128,7 +128,7 @@ function setTimer(){
               quizEl.append(h1Element);
               choicesEl.append(parElement);
         }
-            
+            // stops the quiz from generating questions when there are none left
         if(secLeft > 0 && currentQuestionIndex === questions.length) {
             // clearInterval(timerInterval);
             endQuiz();
@@ -139,7 +139,7 @@ function setTimer(){
       
 }
 
-
+// determines if the user input matches the correct answer
 function checkAnswer(event){
     if(questions[currentQuestionIndex].answer == event.target.innerText){
         confirmEl.textContent = '';
@@ -167,8 +167,8 @@ buttonEl.addEventListener('click', () => {
 });
 
 choicesEl.addEventListener('click', checkAnswer);
-// var scores = [];
 
+// adds the score with initials to local storage
 function submitScore(event){
     
     var userScore = [initials.value + " -" + secLeft];
@@ -183,6 +183,7 @@ function submitScore(event){
     window.location.href="HighScores.html"
 
 }
+// changes to the score page when ran
 function openScores(){
 
     window.location.href="HighScores.html"

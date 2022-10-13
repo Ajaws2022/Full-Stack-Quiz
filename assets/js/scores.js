@@ -1,16 +1,12 @@
-// window.localstorage.removeItem()
-// window.localStorage.removeItem("highscores");
-//   window.location.reload();
-// }
 
 var scoreList = document.querySelector('.scoreList');
 var backBtn = document.querySelector('#go-back')
 var clearBtn = document.querySelector('#clear-scores')
-
+// returns to the main quiz page when ran
 function goBack (){
     location.href = "index.html";  
 }
-
+// adds scores from the local storage to a list
 function addScore(){
     var pullScore = JSON.parse(localStorage.getItem('Score'));
     // var score = document.createElement('li');
@@ -33,7 +29,7 @@ addScore();
 
  backBtn.addEventListener('click', goBack);
 
-// var clearScores = window.localStorage.removeItem("Score")
+// clears the local storage scores and the score list
 function clearScores(){
     scoreList.style.display = "none";
     localStorage.removeItem("Score"); 
