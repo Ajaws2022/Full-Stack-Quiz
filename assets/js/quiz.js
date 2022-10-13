@@ -1,23 +1,23 @@
 var questions = [
     {
-        question: 'What is 2 + 2 equal to?',
-        choices: [1,2,3,4],
-        answer: 4
+        question: 'When declaring a variable what symbol is used to set its value?',
+        choices: ["Parentheses", "Comma", "Equals", "Addition"],
+        answer: "Equals"
     },
     {
-        question: 'What is 2 - 2 equal to?',
-        choices: [0,1,3,4],
-        answer: 0
+        question: 'In order for an element to respond to a click we should an a(n) _____.',
+        choices: ["Clickbox", "Event Listener", "Variable", "Flexbox"],
+        answer: "Event Listener"
     },
     {
-        question: 'What is 2 * 2 equal to?',
-        choices: [1,2,3,4],
-        answer: 4
+        question: 'When working with _____ it is important to create a memorable key name so we can call the object later.',
+        choices: ["Local Storage", "Functions", "Variables", "Query Selectors"],
+        answer: "Local Storage"
     },
     {
-        question: 'What is 2 / 2 equal to?',
-        choices: [1,2,3,4],
-        answer: 1
+        question: 'To add content to an existing element we should use a(n) _____.',
+        choices: ["Variables", "Functions", "Append", "Query Selectors"],
+        answer: "Append"
     }
 ]
 
@@ -30,7 +30,7 @@ var initialForm = document.querySelector('#submitInitials')
 var initials = document.querySelector('#initials')
 var submitBtn = document.querySelector('#submitBtn')
 var viewScores = document.querySelector('.viewScores')
-var secLeft = 20;
+var secLeft = 60;
 var opnScores = document.querySelector('.viewScores')
 
 var currentQuestionIndex = 0;
@@ -150,7 +150,7 @@ function checkAnswer(event){
         confirmEl.textContent = '';
         
         confirmEl.textContent = 'Incorrect!';
-        secLeft -= 5;
+        secLeft -= 12;
     }
     confirmEl.style.display = "block";
     currentQuestionIndex++;
